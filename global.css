@@ -1,0 +1,44 @@
+body {
+  font: 100%/1.5 system-ui, sans-serif;
+  display: flex;
+  flex-flow: column;
+  max-width: 80em;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 1em;
+}
+
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  width: 100%;
+}
+
+.time-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.filter-label {
+  white-space: nowrap;
+}
+
+.time-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* keep time and hint right-aligned within this box */
+}
+
+#time-display,
+#time-hint {
+  display: block;
+}
+
+#time-hint {
+  color: #666;
+  font-style: italic;
+}

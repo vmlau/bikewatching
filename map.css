@@ -1,0 +1,75 @@
+html,
+body {
+  margin: 0;
+  padding: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+#map {
+  width: 100%; /* Adjust width to your desired size */
+  height: 100%; /* Adjust height to your desired size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+  border-radius: 8px; /* Optional: rounded corners */
+}
+
+#map svg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Ensure circles can receive pointer events so <title> tooltips show */
+/* Ensure circles can receive pointer events so <title> tooltips show */
+#map svg circle {
+  pointer-events: auto;
+}
+
+/* Shared color variables and computed color for circles and legend swatches */
+#map svg circle,
+.legend > div:not(.legend-label) {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+}
+
+#map svg circle {
+  fill: var(--color);
+}
+
+/* Legend styling */
+.legend {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-block: 1em;
+}
+
+.legend > div {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.legend > div:not(.legend-label)::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border-radius: 50%; /* make swatches circular */
+  background: var(--color);
+  display: inline-block;
+}
+
+.legend-label {
+  font-weight: 600;
+  margin-right: 0.25em;
+}
